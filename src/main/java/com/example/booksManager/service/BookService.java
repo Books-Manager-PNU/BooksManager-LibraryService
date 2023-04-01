@@ -1,13 +1,14 @@
 package com.example.booksManager.service;
 
-import com.example.booksManager.dto.BookFullDto;
+import com.example.booksManager.dto.BookRequestDto;
+import com.example.booksManager.dto.BookResponseDto;
 
 import java.util.List;
 
 public interface BookService {
-    BookFullDto save(BookFullDto book);
-    List<BookFullDto> findAll(String title);
-    BookFullDto findById(long id);
-    BookFullDto update(long id, BookFullDto book);
+    BookResponseDto save(BookRequestDto book);
+    List<BookResponseDto> findAll();
+    BookResponseDto findById(long id);
+    BookResponseDto update(long id, BookRequestDto book);
     void remove(long id);
 }
