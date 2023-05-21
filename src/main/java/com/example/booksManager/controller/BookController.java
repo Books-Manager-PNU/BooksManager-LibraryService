@@ -36,7 +36,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BookResponseDto> updateTaskById(
+    public ResponseEntity<BookResponseDto> updateBookById(
             @PathVariable Long id,
             @RequestBody BookRequestDto requestDto
     ) {
@@ -45,7 +45,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteBookById(@PathVariable Long id) {
         bookService.remove(id);
         return ResponseEntity.noContent().build();
     }
