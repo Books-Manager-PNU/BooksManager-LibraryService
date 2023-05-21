@@ -34,13 +34,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookResponseDto findById(long id) {
+    public BookResponseDto findById(Long id) {
         Book book = getExistingBookById(id);
         return bookMapper.toBookResponseDto(bookRepository.save(book));
     }
 
     @Override
-    public BookResponseDto update(long id, BookRequestDto bookDto) {
+    public BookResponseDto update(Long id, BookRequestDto bookDto) {
         Book book = getExistingBookById(id);
         bookMapper.updateEntity(bookDto, book);
         bookRepository.save(book);
@@ -48,12 +48,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void remove(long id) {
+    public void remove(Long id) {
         Book book = getExistingBookById(id);
         bookRepository.delete(book);
     }
 
-    private Book getExistingBookById(long id) {
+    private Book getExistingBookById(Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new WebException(HttpStatus.NOT_FOUND, "Book not found"));
     }

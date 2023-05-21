@@ -8,7 +8,7 @@ import java.util.List;
 public interface BookService {
     BookResponseDto save(BookRequestDto book);
     List<BookResponseDto> findAll();
-    BookResponseDto findById(long id);
-    BookResponseDto update(long id, BookRequestDto book);
-    void remove(long id);
+    BookResponseDto findById(Long id);
+    BookResponseDto update(Long id, BookRequestDto book);
+    void remove(Long id);
 }

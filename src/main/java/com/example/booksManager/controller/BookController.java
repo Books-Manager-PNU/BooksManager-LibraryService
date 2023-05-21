@@ -5,6 +5,7 @@ import com.example.booksManager.dto.BookResponseDto;
 import com.example.booksManager.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,33 +17,37 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public BookResponseDto addBook(@RequestBody BookRequestDto bookDto) {
-        return bookService.save(bookDto);
+    public ResponseEntity<BookResponseDto> addBook(
+            @RequestBody BookRequestDto requestDto
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(bookService.save(requestDto));
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<BookResponseDto> findAll() {
-        return bookService.findAll();
+    public ResponseEntity<List<BookResponseDto>> getAll() {
+        return ResponseEntity.ok(bookService.findAll());
     }
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public BookResponseDto findById(@PathVariable long id) {
-        return bookService.findById(id);
+    public ResponseEntity<BookResponseDto> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(bookService.findById(id));
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public BookResponseDto updateTaskById(@PathVariable long id, @RequestBody BookRequestDto bookDto) {
-        return bookService.update(id, bookDto);
+    public ResponseEntity<BookResponseDto> updateTaskById(
+            @PathVariable Long id,
+            @RequestBody BookRequestDto requestDto
+    ) {
+        return ResponseEntity.accepted()
+                .body(bookService.update(id, requestDto));
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTaskById(@PathVariable long id) {
+    public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
         bookService.remove(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public record BookRequestDto(
-        long id,
         @NotBlank(message = "title cannot be empty")
         String title,
         @NotNull(message = "description cannot be null")
