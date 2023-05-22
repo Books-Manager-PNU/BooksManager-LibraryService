@@ -1,7 +1,7 @@
 package com.example.booksManager.mapper;
 
-import com.example.booksManager.dto.BookRequestDto;
-import com.example.booksManager.dto.BookResponseDto;
+import com.example.booksManager.dto.book.BookRequestDto;
+import com.example.booksManager.dto.book.BookResponseDto;
 import com.example.booksManager.entity.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

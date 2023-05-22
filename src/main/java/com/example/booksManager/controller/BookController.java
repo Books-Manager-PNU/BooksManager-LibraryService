@@ -1,7 +1,7 @@
 package com.example.booksManager.controller;
 
-import com.example.booksManager.dto.BookRequestDto;
-import com.example.booksManager.dto.BookResponseDto;
+import com.example.booksManager.dto.book.BookRequestDto;
+import com.example.booksManager.dto.book.BookResponseDto;
 import com.example.booksManager.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookResponseDto> addBook(
+    public ResponseEntity<BookResponseDto> add(
             @RequestBody BookRequestDto requestDto
     ) {
         return ResponseEntity
@@ -36,7 +36,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BookResponseDto> updateBookById(
+    public ResponseEntity<BookResponseDto> update(
             @PathVariable Long id,
             @RequestBody BookRequestDto requestDto
     ) {
@@ -45,7 +45,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBookById(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         bookService.remove(id);
         return ResponseEntity.noContent().build();
     }

@@ -1,7 +1,5 @@
-package com.example.booksManager.dto;
+package com.example.booksManager.dto.book;
 
-import com.example.booksManager.entity.Author;
-import com.example.booksManager.entity.Publisher;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,9 +11,9 @@ public record BookRequestDto(
         @NotNull(message = "description cannot be null")
         String description,
         @NotBlank(message = "author cannot be empty")
-        Author author,
+        Long authorId,
         @NotBlank(message = "publisher cannot be empty")
-        Publisher publisher,
+        Long publisherId,
         @NotBlank(message = "publication date cannot be empty")
         LocalDateTime publicationDate
 ) {
